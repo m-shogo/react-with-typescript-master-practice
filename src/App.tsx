@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Header from "./components/Header";
+import Layout from "./components/Layout";
 import Form from "./components/Form";
 import Recipe from "./components/Recipe";
 import Loading from "./components/Loading";
@@ -45,8 +45,7 @@ const App = () => {
     setLoading(false);
   };
   return (
-    <div>
-      <Header />
+    <Layout>
       <h1>こんにちは</h1>
       <Form
         setMealName={setMealName}
@@ -54,7 +53,7 @@ const App = () => {
         mealName={mealName}
       />
       {loading ? <Loading /> : <Recipe mealData={mealData} />}
-    </div>
+    </Layout>
   );
 };
 export default App;
