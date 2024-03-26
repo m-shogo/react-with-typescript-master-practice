@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import Form from "./components/Form";
+import Recipe from "./components/Recipe";
+
 const App = () => {
   const [mealName, setMealName] = useState<string>("");
   const [mealData, setMealData] = useState({
@@ -12,9 +14,11 @@ const App = () => {
     area: "",
     category: "",
   });
-  const getMealData = async (e:React.FormEvent<HTMLFormElement>) => {
+  const getMealData = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`);
+    const response = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`
+    );
     const jsonData = await response.json();
     const {
       idMeal,
@@ -39,7 +43,8 @@ const App = () => {
     <div>
       <Header />
       <h1>こんにちは</h1>
-      <Form setMealName={setMealName} getMealData={getMealData} />
+      <Form setMealName={setMealName} getMealData={getMealData} mealName={mealName} />
+      <Recipe mealData={mealData}/>
     </div>
   );
 };

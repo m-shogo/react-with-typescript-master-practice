@@ -1,8 +1,9 @@
 type FormProps = {
+  mealName: string;
   setMealName: React.Dispatch<React.SetStateAction<string>>;
-  getMealData: (e:React.FormEvent<HTMLFormElement>) => Promise<void>;
+  getMealData: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
 };
-const Form = ({ setMealName, getMealData }: FormProps) => {
+const Form = ({ mealName, setMealName, getMealData }: FormProps) => {
   return (
     <form onSubmit={getMealData}>
       <input
@@ -10,6 +11,7 @@ const Form = ({ setMealName, getMealData }: FormProps) => {
         type="text"
         name="mealName"
         placeholder="料理名を英語で入力"
+        value={mealName}
         required
       />
       <button>検索</button>
